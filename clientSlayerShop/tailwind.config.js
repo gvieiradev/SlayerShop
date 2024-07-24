@@ -6,14 +6,14 @@ export default {
   theme: {
     extend: {
       colors:{
-        "primary": "#F4D1AE",
+        "cuarty": "#F4D1AE",
         "secondary": "#e8a565",
         "terceary": "#e65353",
-        "cuarty": "#66101f",
+        "primary": "#c81f26",
         "quinty": "#ffffff"
       },
       height:{
-        "136px": "136px",
+        "500": "500px",
       },
     },
   },

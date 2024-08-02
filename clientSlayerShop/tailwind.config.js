@@ -6,15 +6,23 @@ export default {
   theme: {
     extend: {
       colors:{
-        "cuarty": "#F4D1AE",
-        "secondary": "#e8a565",
-        "terceary": "#e65353",
-        "primary": "#c81f26",
-        "quinty": "#ffffff"
+        "blackDemon": "#18272a",
+        "redDemon": "#c7475a",
+        "whiteDemon": "#e8ddd0",
+        "violetDemon": "#582533",
+        "roseDemon": "#c287c2"
       },
       height:{
         "500": "500px",
+        "600": "635px",
+        "200": "272px",
+        "300": "315px",
+        "75": "75%",
       },
+      width:{
+        "320":"327.515px",
+        "60":"60%"
+      }
     },
   },
   plugins: [],

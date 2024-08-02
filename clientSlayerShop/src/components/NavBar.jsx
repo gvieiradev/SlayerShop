@@ -23,7 +23,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <nav className="bg-black md:px-6 p-2 max-w-screen-2xl mx-auto">
+      <nav className="bg-blackDemon md:px-6 p-2 max-w-screen-2xl mx-auto">
         {/* navbar */}
         <div className="text-lg container mx-auto flex justify-between items-center">
           <div className="flex space-x-14 items-center">
@@ -53,7 +53,7 @@ const NavBar = () => {
             <ul className="md:flex space-x-12">
               {Links.map(({ link, path }) => (
                 <a
-                  className="block text-white text-base font-medium"
+                  className="block text-white text-base font-medium hover:text-redDemon active:text-red-800"
                   key={link}
                   href={path}
                 >
@@ -63,15 +63,15 @@ const NavBar = () => {
             </ul>
 
             {/* links icons */}
-            <div className="space-x-12 hidden md:flex items-center">
-              <a href="" className="w-5 h-5 hidden lg:flex items center">
-                <BsHeart className="w-5 h-5 text-white" />
+            <div className="space-x-12 hidden md:flex items-center ">
+              <a href="" className="w-5 h-5 hidden lg:flex items center ">
+                <BsHeart className="w-5 h-5 text-white hover:text-redDemon active:text-red-800 " />
               </a>
               <a href="" className="w-5 h-5 hidden lg:flex items center">
-                <BsCart2 className="w-5 h-5 text-white" />
+                <BsCart2 className="w-5 h-5 text-white hover:text-redDemon active:text-red-800" />
               </a>
               <a href="" className="w-5 h-5 hidden lg:flex items center">
-                <BsPerson className="w-5 h-5 text-white" />
+                <BsPerson className="w-5 h-5 text-white hover:text-redDemon active:text-red-800" />
               </a>
             </div>
           </div>
@@ -79,29 +79,47 @@ const NavBar = () => {
 
         {/* subNavbar */}
       </nav>
-      <div className="container h-10 max-w-screen-2xl mx-auto flex justify-between items-center bg-primary">
+      <div className="container h-10 max-w-screen-2xl mx-auto flex justify-between items-center bg-redDemon">
         <ul className="md:flex items-center space-x-10 m-auto">
-          <a href="" className="flex px-6 items-center text-white font-medium">
+          <a
+            href=""
+            className="flex px-6 items-center text-white font-medium hover:text-blackDemon active:text-gray-900"
+          >
             <GiCharacter className="mx-2" />
             Personajes
           </a>
-          <a href="" className="flex px-6 items-center text-white font-medium">
+          <a
+            href=""
+            className="flex px-6 items-center text-white font-medium hover:text-blackDemon active:text-gray-900"
+          >
             <GiNewspaper className="mx-2" />
             Manga
           </a>
-          <a href="" className="flex px-6 items-center text-white font-medium">
+          <a
+            href=""
+            className="flex px-6 items-center text-white font-medium hover:text-blackDemon active:text-gray-900"
+          >
             <GiTShirt className="mx-2" />
             Merch
           </a>
-          <a href="" className="flex px-6 items-center text-white font-medium">
+          <a
+            href=""
+            className="flex px-6 items-center text-white font-medium hover:text-blackDemon active:text-gray-900"
+          >
             <GiKatana className="mx-2" />
             Katanas
           </a>
-          <a href="" className="flex px-6 items-center text-white font-medium">
+          <a
+            href=""
+            className="flex px-6 items-center text-white font-medium hover:text-blackDemon active:text-gray-900"
+          >
             <GiSparkles className="mx-2" />
             Accesorios
           </a>
-          <a href="" className="flex px-6 items-center text-white font-medium">
+          <a
+            href=""
+            className="flex px-6 items-center text-white font-medium hover:text-blackDemon active:text-gray-900"
+          >
             <BsFileImage className="mx-2" />
             Posters
           </a>

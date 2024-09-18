@@ -7,7 +7,7 @@ import {
   GiTShirt,
 } from "react-icons/gi";
 
-function Category() {
+const Category = () => {
   return (
     <div>
       <div className="m-auto bg-blackDemon h-22 py-20 px-40">
@@ -53,6 +53,6 @@ function Category() {
       </div>
     </div>
   );
-}
+};
 
 export default Category;

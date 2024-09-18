@@ -1,4 +1,4 @@
-function Producsts() {
+const Producsts = () => {
   return (
     <div>
       <div className="m-auto bg-whiteDemon h-1056 py-20 px-40">
@@ -173,6 +173,6 @@ function Producsts() {
       </div>
     </div>
   );
-}
+};
 
 export default Producsts;

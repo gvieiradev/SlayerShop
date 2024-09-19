@@ -1,37 +1,81 @@
-const { httpError } = require("../helpers/handleError")
-const userModel = require('../models/users')
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const User = require('../models/users');
 
-const getItems = async (req,res) => {
+const signUp = async(req, res) =>{
     try {
-        const listAll = await userModel.find({})
-        res.send({data: listAll})
+        const {firstName, lastName, userName, phoneNumber, email, password } = req.body;
+
+        if (!firstName || !lastName || !userName || !phoneNumber || !email || !password){
+            return res
+                .status(400)
+                .json({message:"Por favor ingrese los datos!"});
+        }
+
+        const existingUser = await User.findOne({userName})
+        if(existingUser){
+            return res.status(400).json({message:'Existe un usuario registrado!'})
+        }
+
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+        const newUser = new User({
+            firstName, lastName, userName, phoneNumber, email, password:hashedPassword,
+        });
+        await newUser.save();
+
+        return res
+            .status(201)
+            .json({message:"Usuario registrado!", newUser});
     } catch (error) {
-        httpError(res, error)
+        console.log(error.message);
+        return res.status(500).json({message:"Error al crear el usuario!"})
     }
 }
 
-const getItem = (req,res) => {
-
-}
-
-const createItems = async (req,res) => {
+const login = async(req, res) => {
     try {
-        const {name,age,email} = req.body
-        const restDetail = await userModel.create({
-            name,age,email
-        })
-        res.send({data: restDetail})
+        const {userName, password} = req.body;
+
+        if(!userName || !password){
+            return res
+                .status(400)
+                .json({message:"Por favor ingrese los datos!"})
+        }
+
+        const user = await User.findOne({userName});
+        if (!userName){
+            return res.status(401).json({message:"Usuario o contraseña invalidos!"})
+        }
+
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        if (!passwordMatch){
+            return res.status(401).json({message:"Usuario o contraseña invalidos!"})
+        }
+
+        const token = jwt.sign(
+            {userId: user._id, userName:user.userName},
+            process.env.SECRET_KEY || "1234!@#%<{*&)",
+            {expiresIn: "1h"}
+        );
+
+        return res
+            .status(200)
+            .json({ message: "Usuario logeado", data: user, token });
     } catch (error) {
-        httpError(res, error)
+        console.log(error.message);
+        return res.status(500).json({ message: "Error durante el login" });
     }
 }
 
-const updateitems = (req,res) => {
-
+const getAllUsers = async(req, res) =>{
+    try {
+        const users = await User.find({},{password:0});
+        return res.status(200).json({users})
+    } catch (error) {
+        console.log(error.message);
+        return res.status(500).json({message:"Error obteniendo usuarios"})
+    }
 }
-
-const deleteItems = (req,res) => {
-
-}
-
-module.exports = {getItems, getItem,createItems,updateitems,deleteItems}
+module.exports = {signUp, login, getAllUsers};

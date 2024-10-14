@@ -70,7 +70,7 @@ const NavBar = () => {
               <a href="" className="w-5 h-5 hidden lg:flex items center">
                 <BsCart2 className="w-5 h-5 text-white hover:text-redDemon active:text-red-800" />
               </a>
-              <a href="" className="w-5 h-5 hidden lg:flex items center">
+              <a href="/signup" className="w-5 h-5 hidden lg:flex items center">
                 <BsPerson className="w-5 h-5 text-white hover:text-redDemon active:text-red-800" />
               </a>
             </div>

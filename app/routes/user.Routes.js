@@ -1,10 +1,10 @@
-const express = require('express');
-const {signUp, login, getAllUsers} = require('../controllers/users');
-const { verifyToken } = require('../../config/isAuth');
+import express from 'express';
+import {signUp, login, getAllUsers} from '../controllers/users.js';
+import { verifyToken } from '../../config/isAuth.js';
 const router = express.Router();
 
-router.post('/signup', verifyToken, signUp);
+router.post('/signup', signUp);
 router.post('/login', login);
-router.get('/allusers', getAllUsers);
+router.get('/allusers', verifyToken, getAllUsers);
 
-module.exports = router;
+export default router;

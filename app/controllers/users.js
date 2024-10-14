@@ -1,11 +1,11 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const User = require('../models/users');
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import User from '../models/users.js';
 
-const signUp = async(req, res) =>{
+export const signUp = async(req, res) =>{
     try {
         const {firstName, lastName, userName, phoneNumber, email, password } = req.body;
-
+        console.log(firstName,lastName,userName,phoneNumber,email,password)
         if (!firstName || !lastName || !userName || !phoneNumber || !email || !password){
             return res
                 .status(400)
@@ -34,7 +34,7 @@ const signUp = async(req, res) =>{
     }
 }
 
-const login = async(req, res) => {
+export const login = async(req, res) => {
     try {
         const {userName, password} = req.body;
 
@@ -69,7 +69,7 @@ const login = async(req, res) => {
     }
 }
 
-const getAllUsers = async(req, res) =>{
+export const getAllUsers = async(req, res) =>{
     try {
         const users = await User.find({},{password:0});
         return res.status(200).json({users})
@@ -78,4 +78,3 @@ const getAllUsers = async(req, res) =>{
         return res.status(500).json({message:"Error obteniendo usuarios"})
     }
 }
-module.exports = {signUp, login, getAllUsers};

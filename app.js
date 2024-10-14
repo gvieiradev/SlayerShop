@@ -1,18 +1,17 @@
-const dotenv = require('dotenv');
-const express = require('express');
-const cors = require('cors');
-const userRouter = require('./app/routes/user.routes');
+import dotenv from 'dotenv';
+import express from 'express';
+import cors from 'cors';
+import userRouter from "./app/routes/user.Routes.js";
+import {dbConnect} from './config/mongo.js';
 dotenv.config();
 
-
 const app = express();
-const {dbConnect} = require('./config/mongo');
 
 const PORT = process.env.PORT || 3000
 app.use(cors())
 app.use(express.json())
 
-app.use('/api/v1/user', userRouter)
+app.use('/api/v1', userRouter)
 
 dbConnect()
 app.listen(PORT, () => {

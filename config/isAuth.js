@@ -1,6 +1,6 @@
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 
-const verifyToken = async (req, res, next) =>{
+export const verifyToken = async (req, res, next) =>{
     try {
         const token = req.headers.authorization.split(" ")[1];
         if(!token){
@@ -19,5 +19,3 @@ const verifyToken = async (req, res, next) =>{
         return res.status(500).json({message:"Error validando el token"})
     }
 }
-
-module.exports = verifyToken;

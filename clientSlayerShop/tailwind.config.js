@@ -5,8 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",],
   theme: {
     extend: {
+      backgroundImage:{
+        "bg-auth":"url('https://i.ibb.co/TWkf8wD/20231120101558-1-1.jpg')",
+      },
       colors:{
         "blackDemon": "#18272a",
+        "blackDemon-500": "#151B23",
         "redDemon": "#c7475a",
         "whiteDemon": "#e8ddd0",
         "violetDemon": "#582533",

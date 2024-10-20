@@ -12,6 +12,7 @@ export default {
         "blackDemon": "#18272a",
         "blackDemon-500": "#151B23",
         "redDemon": "#c7475a",
+        "redDemon-500": "#bf4e5f",
         "whiteDemon": "#e8ddd0",
         "violetDemon": "#582533",
         "roseDemon": "#c287c2"

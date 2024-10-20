@@ -12,7 +12,7 @@ export const signUp = async(req, res) =>{
                 .json({message:"Por favor ingrese los datos!"});
         }
 
-        const existingUser = await User.findOne({userName})
+        const existingUser = await User.findOne({email})
         if(existingUser){
             return res.status(400).json({message:'Existe un usuario registrado!'})
         }
